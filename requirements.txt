@@ -1,0 +1,2 @@
+pygame
+qrcode[pil]
