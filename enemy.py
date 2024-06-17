@@ -19,9 +19,9 @@ class Enemy(pygame.sprite.Sprite):
         self.on_ground = True
         self.vel_y = 0
         self.gravity = 0.4
-        self.health = 50 * difficulty  # 根据难度调整敌人生命值
-        self.attack_damage = 5 * difficulty  # 根据难度调整敌人攻击力
-        self.attack_frequency = max(60 // difficulty, 15)  # 根据难度调整攻击频率（帧数）
+        self.health = 50 * difficulty 
+        self.attack_damage = 5 * difficulty 
+        self.attack_frequency = max(60 // difficulty, 15) 
         self.attack_timer = 0
         self.alive = True
 
@@ -47,7 +47,6 @@ class Enemy(pygame.sprite.Sprite):
     
     def draw(self, screen):
         screen.blit(self.image, self.rect)
-        # 在敌人上方显示生命值
         health_text = pygame.font.Font(None, 24).render(f'HP: {self.health}', True, (255, 0, 0))
         screen.blit(health_text, (self.rect.x, self.rect.y - 20))
 
@@ -119,7 +118,6 @@ class Enemy(pygame.sprite.Sprite):
             self.moving_right = False
             self.moving_left = False
 
-        # 边界检查
         if self.rect.left < 0:
             self.rect.left = 0
         if self.rect.right > screen_width:

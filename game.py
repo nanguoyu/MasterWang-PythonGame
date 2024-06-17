@@ -23,8 +23,8 @@ class Player(pygame.sprite.Sprite):
         self.on_ground = True
         self.vel_y = 0
         self.gravity = 0.4
-        self.health = 100  # 初始化玩家生命值
-        self.attack_damage = 10  # 每次攻击的伤害值
+        self.health = 100  
+        self.attack_damage = 10 
         self.alive = True
 
     def load_animations(self):
@@ -186,6 +186,7 @@ def show_menu(screen, ip, port, server):
     bg = pygame.image.load('assets/images/main_menu.png').convert_alpha()
     bg = pygame.transform.scale(bg, (screen_width, screen_height))
     qr_data = f"{ip}:{port}"
+    # qr_data = f"masterwang.wangdongdong.wang:80"
     qr_image = generate_qr_code(qr_data)
     qr_image.save("qr.png")
     qr_surface = pygame.image.load("qr.png")
@@ -217,7 +218,8 @@ def main():
     screen = pygame.display.set_mode((screen_width, screen_height), pygame.DOUBLEBUF | pygame.HWSURFACE)
     pygame.display.set_caption("Master Wang")
 
-    local_ip = "172.20.10.7"#get_local_ip()
+    # local_ip = "172.20.10.7"
+    local_ip = "192.168.6.218"
     port =  random.randint(10038, 10099)
     server = GameServer(local_ip, port)
     server.start()

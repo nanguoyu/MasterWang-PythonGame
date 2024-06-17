@@ -23,7 +23,7 @@ class GameServer:
         self.address = None
         self.running = True
         self.player = None  # Reference to the player object to control
-        self.connected = False  # 标志是否已建立连接
+        self.connected = False 
 
     def start(self):
         print(f"Server started on {self.host}:{self.port}")
@@ -36,7 +36,7 @@ class GameServer:
                 print(f"Connection from {address} has been established!")
                 self.client_socket = client_socket
                 self.address = address
-                self.connected = True  # 设置连接标志
+                self.connected = True  
                 threading.Thread(target=self.handle_client, args=(client_socket,)).start()
             except socket.error:
                 break
@@ -54,7 +54,6 @@ class GameServer:
         client_socket.close()
 
     def handle_command(self, command):
-        # 重置所有移动状态
         self.player.moving_right = False
         self.player.moving_left = False
 
