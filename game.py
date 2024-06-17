@@ -3,6 +3,7 @@ import sys
 import qrcode
 from enemy import Enemy
 from utils import get_local_ip, GameServer
+import random
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos_x, pos_y):
@@ -81,6 +82,7 @@ class Player(pygame.sprite.Sprite):
         elif self.moving_left or self.moving_right:
             self.action = 'run'
             if self.action != current_action:
+                # print(f"current_action {current_action}, left:{self.moving_left} or right:{ self.moving_right}")
                 self.sounds['run'].play()
         else:
             self.action = 'idle'
@@ -215,8 +217,8 @@ def main():
     screen = pygame.display.set_mode((screen_width, screen_height), pygame.DOUBLEBUF | pygame.HWSURFACE)
     pygame.display.set_caption("Master Wang")
 
-    local_ip = "192.168.2.1"#get_local_ip()
-    port = 10088
+    local_ip = "172.20.10.7"#get_local_ip()
+    port =  random.randint(10038, 10099)
     server = GameServer(local_ip, port)
     server.start()
 
