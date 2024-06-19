@@ -218,8 +218,9 @@ def main():
     screen = pygame.display.set_mode((screen_width, screen_height), pygame.DOUBLEBUF | pygame.HWSURFACE)
     pygame.display.set_caption("Master Wang")
 
-    # local_ip = "172.20.10.7"
-    local_ip = "192.168.6.218"
+    local_ip = "172.20.10.2"
+    # local_ip = "192.168.6.218"
+    # local_ip = "localhost"
     port =  random.randint(10038, 10099)
     server = GameServer(local_ip, port)
     server.start()
